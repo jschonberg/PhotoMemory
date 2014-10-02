@@ -1,7 +1,7 @@
 # Photo Memory
 **[Oct 2nd, 2014] This project is  a work in progress.**  
 
-### Overview
+## Overview
 Photo Memory makes it easy to share photos of an event between friends and family. Simply create a shared gallery and send the unique link out to your friends. Each friend can enter in a URL to wherever their photos are stored (Dropbox, facebook, Google Drive). Photo Memory will aggregate and display these photos in one place.
 
 ## How it works
