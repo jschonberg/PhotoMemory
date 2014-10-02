@@ -1,6 +1,7 @@
 import re
 import requests
 from collections import namedtuple
+from urlparse import urlparse
 from flask import Flask, render_template, request
 
 Image = namedtuple("Image", ["dl", "preview"])
@@ -44,6 +45,27 @@ class DropboxGallery(object):
 
     def __str__(self):
         return str(self.images)
+
+
+# Helpers
+def determineSource(URL):
+    """Determine if URL is for Facebook, Google Plus, or Dropbox.
+
+    Returns:
+      "facebook", "google-plus", "dropbox" if service matches
+      Empty string otherwise
+
+    """
+    hostname = urlparse(URL).hostname
+    print "Found host: ", hostname
+    if hostname == "facebook.com" or hostname == "www.facebook.com":
+        return "facebook"
+    elif hostname == "dropbox.com" or hostname == "www.dropbox.com":
+        return "dropbox"
+    elif hostname == "plus.google.com":
+        return "google-plus"
+    else:
+        return ""
 
 
 #Routes
