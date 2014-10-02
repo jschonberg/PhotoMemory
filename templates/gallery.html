@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Shared Memory Gallery</title>
+</head>
+<style type="text/css" media="screen">
+    body{
+        background-color: #eee
+    }
+    li{
+        display:inline;
+        list-style-type: none
+        padding:2px;
+        float:left;
+    }
+    li img{
+        padding:2px;
+    }
+    .source{
+        margin-left:auto;
+        margin-right:auto;
+        margin-top:20px;
+        padding:5px;
+        background-color: #ccc;
+        border-radius: 2px;
+        float:left;
+    }
+    h2{
+        font-family: arial;
+        font-size: 1.2em;
+        padding-left:2px;
+        font-weight:300px;
+    }
+    form{
+        padding-top:10px;
+    }
+    form .entry{
+        width:500px;
+    }
+</style>
+<body>
+    <form action="/" method="post">
+        <input class="entry" type="text" name="dbx_url" placeholder="Dropbox Public Share URL">
+        <input class="submit" type="submit" value="Submit">
+    </form>
+    <div id="main-content">
+        {% for gallery in galleries %}
+        <div class="source">
+            <h2>
+            {{ gallery.title }}
+            </h2>
+            {% for image in gallery %} 
+            <li><a href="{{ image.dl }}"><img src="{{ image.preview }}"></a></li>
+            {% endfor %}
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>
